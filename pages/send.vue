@@ -19,6 +19,7 @@
           <option :key="account" v-for="account in Accounts">{{account}}</option>
         </select>
       </div>
+      <p> estimateGas : {{EstimateGas}}</p>
       <button type="button" class="btn btn-primary" @click="send">Send</button>
       <p v-if="TransactionHash"><span>TransactionHash</span><br/>{{TransactionHash}}</p>
     </form>
@@ -38,13 +39,29 @@
         TransactionHash:"",
         Accounts: [],
         To: "",
+        EstimateGas:0,
+      }
+    },
+    watch:{
+      SendValue(){
+        this.estimateGas();
+      },
+      To(){
+        this.estimateGas();
       }
     },
     methods: {
+      estimateGas(){
+        web3.eth.estimateGas(
+            {from: this.CoinBase,
+              to: this.To,
+              value: this.SendValue,
+            }).then(val=>this.EstimateGas=val)
+      },
       send(){
         web3.eth.sendTransaction({
           from: this.CoinBase,
-          to: "0x4338f1861bca03160CAA6986FE6B816411C74807",
+          to: this.To,
           value: this.SendValue
         }, (error, txHash) => {
           console.log("Transaction Hash:", txHash, error);
