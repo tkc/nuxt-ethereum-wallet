@@ -45,11 +45,11 @@
     data() {
       return {
         Host: "",
-        HashRate: "",
         IsMining: false,
-        PeerCount:0,
-        GasPrice:0,
+        HashRate: 0,
         BlockNumber:0,
+        GasPrice:0,
+        PeerCount:0,
       }
     },
     beforeMount(){
@@ -57,7 +57,6 @@
       web3.eth.isMining().then(val=>this.IsMining=val);
       web3.eth.getHashrate().then(val=>this.HashRate=val);
       web3.eth.getGasPrice().then(val=>this.GasPrice=val);
-      web3.eth.getBlockNumber().then(val=>this.BlockNumber=val);
       web3.eth.getBlockNumber().then(val=>this.BlockNumber=val);
       web3.eth.net.getPeerCount().then(val=>this.PeerCount=val);
     },
