@@ -6,9 +6,11 @@
                 <input type="text" class="form-control" placeholder="Password" v-model="Password">
             </div>
         </form>
-        <button type="button" class="btn btn-primary" @click="createAccount">createAccount</button>
+        <button type="button" class="btn btn-primary" @click="createAccount">CreateNewAccount</button>
         <ul>
-            <li :key="account" v-for="account in Accounts">{{account}}</li>
+            <li :key="account" v-for="account in Accounts">
+                <UserBalance :address="account"/>
+            </li>
         </ul>
     </div>
 </template>
@@ -16,8 +18,12 @@
 <script>
 
   import web3 from '../helper/web3';
+  import UserBalance from '../components/UserBalance.vue';
 
   export default {
+    components: {
+      UserBalance,
+    },
     data() {
       return {
         Accounts:[],

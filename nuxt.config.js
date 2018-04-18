@@ -20,6 +20,9 @@ module.exports = {
   css: [
     {src: '~assets/main.scss', lang: 'scss'}
   ],
+  plugins: [
+    { src: "~plugins/persistedstate.js", ssr: false }
+  ],
   /*
   ** Build configuration
   */

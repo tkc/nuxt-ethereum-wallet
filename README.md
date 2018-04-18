@@ -2,7 +2,6 @@
 
 > ethereum-wallet
 
-
 ## Run Provate ethereum
 
 ```
