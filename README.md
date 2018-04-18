@@ -2,7 +2,7 @@
 
 > ethereum-wallet
 
-## Run Provate ethereum
+## Run Private Ethereum
 
 ```
 $ cd eth_private
