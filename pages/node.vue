@@ -21,16 +21,20 @@
         <td>{{IsMining}}</td>
       </tr>
       <tr>
-        <td>PeerCount</td>
-        <td>{{PeerCount}}</td>
-      </tr>
-      <tr>
         <td>GasPrice</td>
         <td>{{GasPrice}}</td>
       </tr>
       <tr>
         <td>BlockNumber</td>
         <td>{{BlockNumber}}</td>
+      </tr>
+      <tr>
+        <td>NetId</td>
+        <td>{{NetId}}</td>
+      </tr>
+      <tr>
+        <td>PeerCount</td>
+        <td>{{PeerCount}}</td>
       </tr>
       </tbody>
     </table>
@@ -49,6 +53,7 @@
         HashRate: 0,
         BlockNumber:0,
         GasPrice:0,
+        NetId:0,
         PeerCount:0,
       }
     },
@@ -58,6 +63,7 @@
       web3.eth.getHashrate().then(val=>this.HashRate=val);
       web3.eth.getGasPrice().then(val=>this.GasPrice=val);
       web3.eth.getBlockNumber().then(val=>this.BlockNumber=val);
+      web3.eth.net.getId().then(val=>this.NetId=val);
       web3.eth.net.getPeerCount().then(val=>this.PeerCount=val);
     },
   }
