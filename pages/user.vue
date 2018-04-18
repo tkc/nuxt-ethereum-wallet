@@ -33,23 +33,10 @@
       }
     },
     beforeMount(){
-
-//      web3.eth.getBalance().then(val=>{
-//        console.log(val);
-//        this.HashRate=val
-//      });
-
       web3.eth.getCoinbase().then(val=>{
         this.CoinBase = val;
         web3.eth.getBalance(val).then(val=>this.Balance=val);
       });
-
-//      web3.eth.getHashrate().then(val=>this.HashRate=val);
-//      web3.eth.isMining().then(val=>this.IsMining=val);
-//      web3.eth.net.getPeerCount().then(val=>this.PeerCount=val);
-//      web3.eth.getGasPrice().then(val=>this.GasPrice=val);
-//      web3.eth.getBlockNumber().then(val=>this.BlockNumber=val);
-
     },
   }
 </script>
