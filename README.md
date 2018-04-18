@@ -2,7 +2,7 @@
 
 > ethereum-wallet
 
-<img width="1278" alt="screen shot 2018-04-19 at 2 33 47" src="https://user-images.githubusercontent.com/181991/38948316-31354494-437a-11e8-93bd-f609902c6a85.png">
+<img width="1307" alt="screen shot 2018-04-19 at 2 36 00" src="https://user-images.githubusercontent.com/181991/38948402-76c7aaa6-437a-11e8-940f-96551d70bb51.png">
 
 
 ## Run Private Ethereum
