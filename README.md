@@ -5,6 +5,7 @@
 ## Run Provate ethereum
 
 ```
+$ cd eth_private
 $ geth --networkid "10"  \
      --nodiscover  \
      --datadir `pwd`   \
