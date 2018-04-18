@@ -6,7 +6,7 @@
                 <input type="text" class="form-control" placeholder="Password" v-model="Password">
             </div>
         </form>
-        <button type="button" class="btn btn-primary" @click="createAccount">createAccount</button>
+        <button type="button" class="btn btn-primary" @click="createAccount">CreateNewAccount</button>
         <ul>
             <li :key="account" v-for="account in Accounts">{{account}}</li>
         </ul>
