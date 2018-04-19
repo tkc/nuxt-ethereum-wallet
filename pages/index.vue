@@ -3,11 +3,9 @@
     <h1>Node</h1>
     <div class="row">
       <div class="col-12">
-
         <div v-if="!NetId" class="alert alert-danger fade show" role="alert">
           <p><span>can't connect ...</span></p>
         </div>
-
         <table class="table">
           <thead>
           <tr>
@@ -19,6 +17,10 @@
           <tr>
             <td>Host</td>
             <td>{{Host}}</td>
+          </tr>
+          <tr>
+            <td>CoinBase</td>
+            <td>{{CoinBase}}</td>
           </tr>
           <tr>
             <td>HashRate</td>
@@ -60,6 +62,7 @@
       return {
         Host: "",
         IsMining: false,
+        CoinBase: "",
         HashRate: 0,
         BlockNumber:0,
         GasPrice:0,
@@ -69,6 +72,7 @@
     },
     beforeMount(){
       this.Host = web3.currentProvider.host;
+      web3.eth.getCoinbase().then(val=>this.CoinBase=val);
       web3.eth.isMining().then(val=>this.IsMining=val);
       web3.eth.getHashrate().then(val=>this.HashRate=val);
       web3.eth.getGasPrice().then(val=>this.GasPrice=val);
