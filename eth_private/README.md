@@ -4,7 +4,7 @@
 $ geth --datadir `pwd` init `pwd`/myGenesis.json
 ```
 
-## Run
+## Run NetWork
 
 ```
 $ geth --networkid "10"  \
@@ -18,16 +18,16 @@ $ geth --networkid "10"  \
      console 2>> `pwd`/geth_err.log 
 ```
 
-## Account
-
-```
-$ personal.newAccount("password")
-```
-
 ## Miner
 
 ```
 $ miner.start()
+```
+
+## Create Account
+
+```
+$ personal.newAccount("password")
 ```
 
 ## UnlockAccount

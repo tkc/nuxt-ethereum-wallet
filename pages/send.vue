@@ -1,33 +1,46 @@
 <template>
-  <div class="container-fluid">
-    <form>
-      <div class="form-group">
-        <label>CoinBase</label>
-        <input type="text" class="form-control" placeholder="CoinBase" v-model="CoinBase" disabled>
+  <div>
+    <h1>Send</h1>
+    <div class="row">
+      <div class="col-12">
+        <form>
+          <div class="form-group">
+            <label>CoinBase</label>
+            <input type="text" class="form-control" placeholder="******" v-model="CoinBase" disabled>
+          </div>
+          <div class="form-group">
+            <label>Balance</label>
+            <input type="text" class="form-control" placeholder="Balance" v-model="Balance" disabled>
+          </div>
+          <div class="form-group">
+            <label>PassWord</label>
+            <input type="text" class="form-control" placeholder="PassWord" v-model="PassWord">
+          </div>
+          <div class="form-group">
+            <label>SendValue</label>
+            <input type="text" class="form-control" placeholder="SendValue" v-model="SendValue">
+          </div>
+          <div class="form-group">
+            <label>To</label>
+            <select v-model="To" class="form-control">
+              <option :key="account" v-for="account in Accounts">{{account}}</option>
+            </select>
+          </div>
+          <p> estimateGas : {{EstimateGas}}</p>
+          <button type="button" class="btn btn-primary" @click="send">Send</button>
+        </form>
       </div>
-      <div class="form-group">
-        <label>Balance</label>
-        <input type="text" class="form-control" placeholder="Balance" v-model="Balance" disabled>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <div v-if="TransactionHash" class="alert alert-warning alert-dismissible fade show" role="alert">
+          <p ><span>TransactionHash</span><br/>{{TransactionHash}}</p>
+        </div>
       </div>
-      <div class="form-group">
-        <label>PassWord</label>
-        <input type="text" class="form-control" placeholder="PassWord" v-model="PassWord">
-      </div>
-      <div class="form-group">
-        <label>SendValue</label>
-        <input type="text" class="form-control" placeholder="SendValue" v-model="SendValue">
-      </div>
-      <div class="form-group">
-        <label>To</label>
-        <select v-model="To" class="form-control">
-          <option :key="account" v-for="account in Accounts">{{account}}</option>
-        </select>
-      </div>
-      <p> estimateGas : {{EstimateGas}}</p>
-      <button type="button" class="btn btn-primary" @click="send">Send</button>
-      <p v-if="TransactionHash"><span>TransactionHash</span><br/>{{TransactionHash}}</p>
-    </form>
+    </div>
   </div>
+
 </template>
 
 <script>
@@ -79,7 +92,6 @@
             } else {
               alert("Ether Transfer Failed");
             }
-
           });
         }).catch(()=>{
           alert("can't lock account");
@@ -95,3 +107,9 @@
     },
   }
 </script>
+
+<style scoped>
+  .row{
+    margin: 20px 0px;
+  }
+</style>
