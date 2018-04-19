@@ -1,6 +1,11 @@
 <template>
-    <tr>
-        <td><button type="button" class="btn btn-outline-primary" @click="select">Select</button></td>
+    <tr :class="[$store.getters.CurrentAddress === address? 'active' : '']">
+        <td>
+            <button v-if="$store.getters.CurrentAddress !== address"
+                    type="button"
+                    class="btn btn-outline-primary"
+                    @click="select(address)">Select</button>
+        </td>
         <td><p v-text="address"/></td>
         <td><p v-text="Balance"/></td>
     </tr>
@@ -16,11 +21,8 @@
       }
     },
     methods: {
-      select(){
-        web3.eth.personal.newAccount(this.Password).then(()=>{
-          this.Password = "";
-          web3.eth.getAccounts().then(val=>this.Accounts=val);
-        });
+      select(address){
+        this.$store.dispatch('setCurrentAddress', address);
       },
     },
     beforeMount(){
@@ -28,3 +30,9 @@
     },
   }
 </script>
+
+<style scoped>
+    .active{
+        color : #007bff;
+    }
+</style>
