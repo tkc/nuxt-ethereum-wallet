@@ -99,11 +99,15 @@
       }
     },
     beforeMount(){
-      web3.eth.getCoinbase().then(val=>{
-//        this.CoinBase = val;
-        this.CoinBase =`0x5d8CD11aB2867895A3Ce1b38f04569716Ccec273`;
+      if(this.$store.getters.CurrentAddress){
+        this.CoinBase = this.$store.getters.CurrentAddress;
         web3.eth.getBalance(this.CoinBase).then(val=>this.Balance=val);
-      });
+      }else{
+        web3.eth.getCoinbase().then(val=>{
+          this.CoinBase = val;
+          web3.eth.getBalance(this.CoinBase).then(val=>this.Balance=val);
+        });
+      }
       web3.eth.getAccounts().then(val=>this.Accounts=val);
     },
   }
