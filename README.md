@@ -1,4 +1,4 @@
-# ethereum-wallet
+# nuxt-ethereum-wallet
 
 > ethereum-wallet
 
